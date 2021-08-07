@@ -17,21 +17,30 @@ public class PrimaryController {
     @FXML private Button itemEntryButton;
     @FXML private Label statusLabel;
 
-    public void onItemEntryButtonPressed()
-    {
+    private Transaction curTransaction;
+
+    public PrimaryController(){
+    }
+
+    public void initialize(){
+
+        curTransaction = new Transaction();
+        itemListView.setItems(curTransaction.getItemList());
+    }
+
+
+    public void onItemEntryButtonPressed() {
         String strippedInput = itemEntryField.getText().strip();
 
         if(strippedInput.isBlank()){
             statusLabel.setText("Invalid entry!");
             itemEntryField.clear();
         }
-        else
-        {
-            itemListView.getItems().add(strippedInput);
+        else {
+            curTransaction.addItem(strippedInput);
             itemEntryField.clear();
-            statusLabel.setText("");
+            statusLabel.setText("Item added!");
         }
-
     }
 
 

@@ -1,5 +1,8 @@
 package jkronyak;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.util.ArrayList;
 
 public class Transaction {
@@ -7,20 +10,27 @@ public class Transaction {
     static int transactionCount;
     private String transactionID;
 
-    private ArrayList<Item> itemArrayList;
+    private ObservableList<String> itemList;
 
 
 
     public Transaction() {
         transactionID = Integer.toString(transactionCount);
         transactionCount++;
-        itemArrayList = new ArrayList<Item>();
+        itemList = FXCollections.observableArrayList();
     }
 
-    public void addItem(Item itemToAdd)
+    public void addItem(String itemToAdd)
     {
-        itemArrayList.add(itemToAdd);
+        //System.out.println("In addItem()");
+        itemList.add(itemToAdd);
+        //System.out.println("New list content: " + itemList);
     }
+
+    public ObservableList<String> getItemList(){
+        return itemList;
+    }
+
 
     public String getTransactionID(){
         return transactionID;
