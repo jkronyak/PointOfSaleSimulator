@@ -5,14 +5,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 public class PrimaryController {
 
-    @FXML private ListView<String> itemListView;
+    @FXML private ListView<Item> itemListView;
     @FXML private TextField itemEntryField;
     @FXML private Button itemEntryButton;
     @FXML private Label statusLabel;
@@ -30,19 +27,34 @@ public class PrimaryController {
 
 
     public void onItemEntryButtonPressed() {
-        String strippedInput = itemEntryField.getText().strip();
 
-        if(strippedInput.isBlank()){
-            statusLabel.setText("Invalid entry!");
-            itemEntryField.clear();
+        try {
+            String strippedInput = itemEntryField.getText().strip();
+
+            if (strippedInput.isBlank()) {
+                statusLabel.setText("Invalid entry!");
+                itemEntryField.clear();
+            } else {
+                curTransaction.addItem(strippedInput);
+                itemEntryField.clear();
+                statusLabel.setText("Item added!");
+
+            }
+        } catch(Exception e){
+            showErrorAlert(e);
         }
-        else {
-            curTransaction.addItem(strippedInput);
-            itemEntryField.clear();
-            statusLabel.setText("Item added!");
-        }
+
+
     }
 
+    public void showErrorAlert(Exception e) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText(e.getMessage());
+
+        alert.showAndWait();
+    }
 
     @FXML
     private void switchToSecondary() throws IOException {
