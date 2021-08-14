@@ -7,10 +7,11 @@ import java.util.ArrayList;
 
 public class Transaction {
 
-    static int transactionCount;
-    private String transactionID;
+    private static int transactionCount;
 
-    private ObservableList<String> itemList;
+    private String transactionID;
+    private ObservableList<Item> itemList;
+    private ItemDAO itemDAO;
 
 
 
@@ -18,16 +19,24 @@ public class Transaction {
         transactionID = Integer.toString(transactionCount);
         transactionCount++;
         itemList = FXCollections.observableArrayList();
+        itemDAO = new ItemDAO();
+
     }
 
-    public void addItem(String itemToAdd)
+    public void addItem(String plu)
     {
-        //System.out.println("In addItem()");
-        itemList.add(itemToAdd);
-        //System.out.println("New list content: " + itemList);
+        Item itemToAdd = itemDAO.get(Integer.parseInt(plu));
+        if(itemToAdd != null) {
+            itemList.add(itemToAdd);
+        } else
+        {
+            System.out.println("ITEM NOT FOUND");
+        }
+
+        //itemList.add(itemToAdd);
     }
 
-    public ObservableList<String> getItemList(){
+    public ObservableList<Item> getItemList(){
         return itemList;
     }
 
