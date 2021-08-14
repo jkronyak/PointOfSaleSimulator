@@ -21,7 +21,6 @@ public class App extends Application {
         stage.setScene(scene);
         stage.show();
 
-        Transaction.transactionCount = 0;
     }
 
     static void setRoot(String fxml) throws IOException {
