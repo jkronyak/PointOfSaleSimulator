@@ -8,7 +8,7 @@ public class Item implements Serializable {
     private String name;
     private Double price;
 
-    public Item(Integer plu, String name, Double price){
+    public Item(Integer plu, String name, Double price) {
         this.plu = plu;
         this.name = name;
         this.price = price;
