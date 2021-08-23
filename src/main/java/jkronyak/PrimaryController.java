@@ -9,17 +9,19 @@ import javafx.scene.control.*;
 
 public class PrimaryController {
 
-    @FXML private ListView<Item> itemListView;
+    @FXML private ListView<TransactionItem> itemListView;
     @FXML private TextField itemEntryField;
     @FXML private Button itemEntryButton;
     @FXML private Label statusLabel;
+    @FXML private Label totalPriceLabel;
+
 
     private Transaction curTransaction;
 
-    public PrimaryController(){
+    public PrimaryController() {
     }
 
-    public void initialize(){
+    public void initialize() {
 
         curTransaction = new Transaction();
         itemListView.setItems(curTransaction.getItemList());
@@ -38,10 +40,11 @@ public class PrimaryController {
                 curTransaction.addItem(strippedInput);
                 itemEntryField.clear();
                 statusLabel.setText("Item added!");
-
+                totalPriceLabel.setText( "TOTAL: $" + curTransaction.getTotal());
             }
-        } catch(Exception e){
+        } catch(Exception e) {
             showErrorAlert(e);
+            itemEntryField.clear();
         }
 
 

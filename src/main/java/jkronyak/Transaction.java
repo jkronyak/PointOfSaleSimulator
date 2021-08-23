@@ -10,7 +10,7 @@ public class Transaction {
     private static int transactionCount;
 
     private String transactionID;
-    private ObservableList<Item> itemList;
+    private ObservableList<TransactionItem> itemList;
     private ItemDAO itemDAO;
 
 
@@ -23,23 +23,48 @@ public class Transaction {
 
     }
 
-    public void addItem(String plu)
-    {
-        Item itemToAdd = itemDAO.get(Integer.parseInt(plu));
+    public void addItem(String plu) {
+        TransactionItem itemToAdd = (TransactionItem) itemDAO.get(Integer.parseInt(plu));
+
         if(itemToAdd != null) {
-            itemList.add(itemToAdd);
-        } else
-        {
+            if(itemList.contains(itemToAdd)) {
+                TransactionItem foundItem = null;
+                for(int i = 0; i < itemList.size(); i++) {
+                    if( itemList.get(i).equals(itemToAdd) ) {
+                        itemToAdd.setQuantity(itemList.get(i).getQuantity() + 1);
+
+                        itemList.set(i, itemToAdd);
+                        System.out.println("FOUND");
+                    }
+                }
+
+            }
+            else {
+                itemList.add(itemToAdd);
+            }
+
+
+        } else {
             System.out.println("ITEM NOT FOUND");
+            throw new NullPointerException("Item not on file");
         }
 
         //itemList.add(itemToAdd);
     }
 
-    public ObservableList<Item> getItemList(){
+    public ObservableList<TransactionItem> getItemList(){
         return itemList;
     }
 
+    public double getTotal(){
+
+        double total = 0;
+        for(TransactionItem item : itemList) {
+            total += item.getPrice();
+        }
+        return total;
+
+    }
 
     public String getTransactionID(){
         return transactionID;
