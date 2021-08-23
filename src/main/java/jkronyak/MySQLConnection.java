@@ -8,7 +8,7 @@ public class MySQLConnection {
     private static final String DATABASE_USERNAME = "root";
     private static final String DATABASE_PASSWORD = "Jarusalem44";
 
-    public static Connection getConnection(){
+    public static Connection getConnection() {
         try {
             Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
             return connection;
