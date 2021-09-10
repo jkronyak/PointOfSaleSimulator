@@ -6,7 +6,7 @@ public class MySQLConnection {
 
     private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/itemdb";
     private static final String DATABASE_USERNAME = "root";
-    private static final String DATABASE_PASSWORD = "Jarusalem44";
+    private static final String DATABASE_PASSWORD = "TestPassword123!";
 
     public static Connection getConnection() {
         try {
