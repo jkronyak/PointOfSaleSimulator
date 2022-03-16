@@ -7,6 +7,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
+import utils.SeedDB;
 
 /**
  * JavaFX App
@@ -17,6 +20,8 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        SeedDB.seed();
+
         scene = new Scene(loadFXML("primary"), 640, 480);
         stage.setTitle("Point Of Sale");
         stage.setScene(scene);
@@ -29,7 +34,8 @@ public class App extends Application {
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+        System.out.println(fxml);
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/views/" + fxml + ".fxml"));
         return fxmlLoader.load();
     }
 

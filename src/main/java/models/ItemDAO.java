@@ -1,22 +1,23 @@
 package models;
 
-import utils.DAO;
 import utils.MySQLConnection;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
-public class ItemDAO implements DAO<Item> {
+public class ItemDAO {
 
-    @Override
-    public Item get(Integer plu) {
+    public Item get(String plu) throws SQLException {
         Connection connection = MySQLConnection.getConnection();
         try {
 
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM itemdb.items WHERE plu=" + plu);
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM storedb.items WHERE plu=" + plu);
 
             if(resultSet.next()) {
-                return new TransactionItem(resultSet.getInt("plu"), resultSet.getString("name"), resultSet.getDouble("price"));
+                return new TransactionItem(resultSet.getString("plu"), resultSet.getString("name"), resultSet.getDouble("price"));
             }
 
             connection.close();
@@ -26,11 +27,25 @@ public class ItemDAO implements DAO<Item> {
             System.out.println("SQLException: " + e.getMessage());
             System.out.println("SQLState: " + e.getSQLState());
             System.out.println("VendorError: " + e.getErrorCode());
+            throw e;
         }
 
 
         return null;
     }
+
+    private static Item getItemFromResultSet(ResultSet rs) throws SQLException {
+        Item item = null;
+        if(rs.next()) {
+            item = new Item();
+            item.setPlu(rs.getString("plu"));
+            item.setName(rs.getString("name"));
+            item.setPrice(rs.getDouble("price"));
+        }
+        return item;
+    }
+
+
 
     /*
     @Override

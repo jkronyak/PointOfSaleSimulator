@@ -3,6 +3,8 @@ package models;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.sql.SQLException;
+
 public class Transaction {
 
     private static int transactionCount;
@@ -21,8 +23,8 @@ public class Transaction {
 
     }
 
-    public void addItem(String plu) {
-        TransactionItem itemToAdd = (TransactionItem) itemDAO.get(Integer.parseInt(plu));
+    public void addItem(String plu) throws SQLException {
+        TransactionItem itemToAdd = (TransactionItem) itemDAO.get(plu);
 
         if(itemToAdd != null) {
             if(itemList.contains(itemToAdd)) {

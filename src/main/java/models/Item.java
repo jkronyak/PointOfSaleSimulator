@@ -4,11 +4,17 @@ import java.io.Serializable;
 
 public class Item implements Serializable {
 
-    private Integer plu;
+    private String plu;
     private String name;
     private Double price;
 
-    public Item(Integer plu, String name, Double price) {
+    public Item() {
+        this.plu = "0";
+        this.name = "unnamed";
+        this.price = 0.0;
+    }
+
+    public Item(String plu, String name, Double price) {
         this.plu = plu;
         this.name = name;
         this.price = price;
@@ -19,11 +25,11 @@ public class Item implements Serializable {
         this.price = price;
     }
 
-    public Integer getPlu() {
+    public String getPlu() {
         return plu;
     }
 
-    public void setPlu(Integer plu) {
+    public void setPlu(String plu) {
         this.plu = plu;
     }
 

@@ -7,12 +7,12 @@ public class TransactionItem extends Item {
     private Integer quantity;
 
 
-    public TransactionItem(Integer plu, String name, Double price, Integer quantity) {
+    public TransactionItem(String plu, String name, Double price, Integer quantity) {
         super(plu, name, price);
         this.quantity = quantity;
     }
 
-    public TransactionItem(Integer plu, String name, Double price) {
+    public TransactionItem(String plu, String name, Double price) {
         super(plu, name, price);
         this.quantity = 1;
     }
