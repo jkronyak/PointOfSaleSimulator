@@ -41,7 +41,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.4</version>
                 <configuration>
-                    <mainClass>jkronyak.App</mainClass>
+                    <mainClass>app.App</mainClass>
                 </configuration>
             </plugin>
         </plugins>

@@ -1,4 +1,4 @@
-package jkronyak;
+package models;
 
 import java.io.Serializable;
 

@@ -1,11 +1,12 @@
-package jkronyak;
+package controllers;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import app.App;
+import models.Transaction;
+import models.TransactionItem;
 
 public class PrimaryController {
 

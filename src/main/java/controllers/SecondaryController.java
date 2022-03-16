@@ -1,7 +1,8 @@
-package jkronyak;
+package controllers;
 
 import java.io.IOException;
 import javafx.fxml.FXML;
+import app.App;
 
 public class SecondaryController {
 

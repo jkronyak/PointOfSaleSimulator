@@ -1,10 +1,9 @@
-package jkronyak;
+package models;
 
-import javax.sql.DataSource;
+import utils.DAO;
+import utils.MySQLConnection;
+
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 
 public class ItemDAO implements DAO<Item> {
 

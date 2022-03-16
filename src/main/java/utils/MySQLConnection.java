@@ -1,4 +1,4 @@
-package jkronyak;
+package utils;
 
 import java.sql.*;
 

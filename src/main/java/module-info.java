@@ -3,6 +3,12 @@ module jkronyak {
     requires javafx.fxml;
     requires java.sql;
 
-    opens jkronyak to javafx.fxml;
-    exports jkronyak;
+    opens app to javafx.fxml;
+    exports app;
+    exports controllers;
+    opens controllers to javafx.fxml;
+    exports models;
+    opens models to javafx.fxml;
+    exports utils;
+    opens utils to javafx.fxml;
 }
