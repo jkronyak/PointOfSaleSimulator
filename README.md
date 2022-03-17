@@ -29,7 +29,7 @@ This project also allowed me to practice making use of the Maven dependency mana
 simply for its popularity and ease of use.
 
 ## Planned Features
-[-] Employee Login Validation
-[-] Inventory Management System
-[-] Transaction History
-[-] Discounts/Sales
+[-] Employee Login Validation  
+[-] Inventory Management System  
+[-] Transaction History  
+[-] Discounts/Sales  
