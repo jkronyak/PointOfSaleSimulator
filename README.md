@@ -27,3 +27,9 @@ a packaged MySQLConnection, and database Seeding.
 ### Maven 
 This project also allowed me to practice making use of the Maven dependency management system, and I have appreciated its simplicity. I picked Maven 
 simply for its popularity and ease of use.
+
+## Planned Features
+[-] Employee Login Validation
+[-] Inventory Management System
+[-] Transaction History
+[-] Discounts/Sales
