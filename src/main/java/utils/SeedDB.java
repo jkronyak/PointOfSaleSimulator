@@ -13,7 +13,6 @@ public class SeedDB {
 
             // Drop the table in the database if it exists.
             Statement statement = connection.createStatement();
-            //statement.executeUpdate("IF EXISTS ( SELECT * FROM storedb WHERE name='items' ) DROP TABLE storedb.items ");
             statement.executeUpdate("DROP TABLE IF EXISTS storedb.items");
             System.out.println("Table deleted in database");
 
