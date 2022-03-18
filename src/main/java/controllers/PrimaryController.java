@@ -19,14 +19,12 @@ public class PrimaryController {
     @FXML private Label statusLabel;
     @FXML private Label totalPriceLabel;
 
-
     private Transaction curTransaction;
 
     public PrimaryController() {
     }
 
     public void initialize() {
-
         curTransaction = new Transaction();
         itemListView.setItems(curTransaction.getItemList());
     }
@@ -38,10 +36,8 @@ public class PrimaryController {
                 itemEntryField.insertText(itemEntryField.getText().length(), "0");
                 break;
             case "backspaceButton":
-                if(itemEntryField.getText().length() != 0) {
-                    itemEntryField.replaceText(0, itemEntryField.getText().length(),
-                            itemEntryField.getText().substring(0, itemEntryField.getText().length() - 1));
-                }
+                if(itemEntryField.getText().length() != 0)
+                    itemEntryField.replaceText(0, itemEntryField.getText().length(), itemEntryField.getText().substring(0, itemEntryField.getText().length() - 1));
                 break;
             case "clearButton":
                 itemEntryField.clear();

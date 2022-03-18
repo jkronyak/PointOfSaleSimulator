@@ -37,9 +37,7 @@ public class Transaction {
                         System.out.println("FOUND");
                     }
                 }
-
-            }
-            else {
+            } else {
                 itemList.add(itemToAdd);
             }
 
