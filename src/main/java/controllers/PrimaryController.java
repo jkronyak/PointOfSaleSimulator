@@ -29,6 +29,7 @@ public class PrimaryController {
         itemListView.setItems(curTransaction.getItemList());
     }
 
+    @FXML
     public void onNumpadButtonPressed(ActionEvent event) {
         String id = ((Node) event.getSource()).getId();
         switch(id) {
@@ -73,7 +74,7 @@ public class PrimaryController {
 
     }
 
-
+    @FXML
     public void onItemEntryButtonPressed() {
 
         try {

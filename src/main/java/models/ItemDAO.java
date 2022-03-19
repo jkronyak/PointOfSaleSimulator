@@ -11,6 +11,7 @@ public class ItemDAO {
 
     public Item get(String plu) throws SQLException {
         Connection connection = MySQLConnection.getConnection();
+
         try {
 
             Statement statement = connection.createStatement();
