@@ -17,10 +17,4 @@ public class MySQLConnection {
             throw new RuntimeException("Error connecting to the database", e);
         }
     }
-
-
-
-
-
-
 }

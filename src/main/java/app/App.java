@@ -22,7 +22,7 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         SeedDB.seed();
 
-        scene = new Scene(loadFXML("primary"), 640, 480);
+        scene = new Scene(loadFXML("LoginView"));
         stage.setTitle("Point Of Sale");
         stage.setScene(scene);
         stage.show();

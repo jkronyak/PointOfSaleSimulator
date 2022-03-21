@@ -2,6 +2,7 @@ module jkronyak {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
+    requires java.sql.rowset;
 
     opens app to javafx.fxml;
     exports app;
