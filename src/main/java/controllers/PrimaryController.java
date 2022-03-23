@@ -1,17 +1,22 @@
 package controllers;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import app.App;
+import javafx.stage.Stage;
 import models.Transaction;
 import models.TransactionItem;
 
-public class PrimaryController {
+public class PrimaryController implements Initializable {
 
+    @FXML private SplitPane splitPane;
     @FXML private ListView<TransactionItem> itemListView;
     @FXML private TextField itemEntryField;
     @FXML private Button itemEntryButton;
@@ -21,12 +26,17 @@ public class PrimaryController {
     private Transaction curTransaction;
 
     public PrimaryController() {
+
     }
 
-    public void initialize() {
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
         curTransaction = new Transaction();
         itemListView.setItems(curTransaction.getItemList());
+
     }
+
 
     @FXML
     public void onNumpadButtonPressed(ActionEvent event) {
@@ -92,8 +102,6 @@ public class PrimaryController {
             showErrorAlert(e);
             itemEntryField.clear();
         }
-
-
     }
 
     public void showErrorAlert(Exception e) {
@@ -109,4 +117,5 @@ public class PrimaryController {
     private void switchToSecondary() throws IOException {
         App.setRoot("secondary");
     }
+
 }
