@@ -14,9 +14,12 @@ public class EmployeeDAOTester {
 
         EmployeeDAO employeeDAO = new EmployeeDAO();
 
-        byte[] salt = PasswordUtil.getSalt();
-        employeeDAO.create(2, "Erik", "Anhorn", PasswordUtil.getHashedPassword("pass", salt), salt);
-
+        Employee jar = new Employee(1, "Jared", "Kronyak", "password");
+        employeeDAO.create(jar);
+        Employee zatch = new Employee(2, "Zatched", "Roho", "alongerpassword");
+        employeeDAO.create(zatch);
+        Employee tyler = new Employee(3, "Tyler", "Ortiz", "pass");
+        employeeDAO.create(tyler);
 
     }
 }

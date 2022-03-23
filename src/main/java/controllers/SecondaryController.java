@@ -30,25 +30,43 @@ public class SecondaryController {
     @FXML
     public void onLoginButtonPressed(ActionEvent event) {
 
-        String foundPassword;
-        byte[] salt;
-
         try {
+
             Employee foundEmployee = employeeDAO.get(employeeIDTextField.getText());
+            String enteredPassword = PasswordUtil.getHashedPassword(employeePasswordField.getText(), foundEmployee.getSalt());
+            String foundPassword = foundEmployee.getPassword();
+
             if(foundEmployee == null) {
                 throw new Exception("Employee not found!");
             }
-            foundPassword = foundEmployee.getPassword();
-            salt = foundEmployee.getSalt();
 
-
-            String hashedEnteredPassword = PasswordUtil.getHashedPassword(this.employeePasswordField.getText(), salt);
-
-            if(hashedEnteredPassword.equals(foundPassword)) {
+            if(enteredPassword.equals(foundPassword)) {
                 switchToTransactionView();
             } else {
-                throw new Exception("Incorrect id and password combination");
+                System.out.println("REEEEE :(");
             }
+
+//            Employee foundEmployee = employeeDAO.get(employeeIDTextField.getText());
+//            if(foundEmployee == null) {
+//                throw new Exception("Employee not found!");
+//            }
+//            foundPassword = foundEmployee.getPassword();
+//            salt = foundEmployee.getSalt();
+//
+//
+//            if(employeePasswordField.getText().equals("pass")) {
+//                System.out.println("INPUTTED PASS EQUALS pass");
+//            }
+//
+//            String textPass = this.employeePasswordField.getText();
+//            String hashTextPass = PasswordUtil.getHashedPassword(textPass, salt);
+//            String hashedEnteredPassword = PasswordUtil.getHashedPassword(textPass, salt);
+//
+//            if(hashedEnteredPassword.equals(foundPassword)) {
+//                switchToTransactionView();
+//            } else {
+//                throw new Exception("Incorrect id and password combination");
+//            }
 
 
 

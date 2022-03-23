@@ -5,6 +5,7 @@ import utils.PasswordUtil;
 import java.io.Serializable;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
+import java.util.Arrays;
 
 public class Employee implements Serializable {
 
@@ -19,6 +20,14 @@ public class Employee implements Serializable {
         this.firstName = firstName;
         this.lastName = lastName;
         this.salt = PasswordUtil.getSalt();
+        this.password = PasswordUtil.getHashedPassword(password, salt);
+    }
+
+    public Employee(Integer employeeID, String firstName, String lastName, String password, byte[] salt) throws NoSuchAlgorithmException, InvalidKeySpecException {
+        this.employeeID = employeeID;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.salt = Arrays.copyOf(salt, salt.length);
         this.password = PasswordUtil.getHashedPassword(password, salt);
     }
 

@@ -9,8 +9,11 @@ public class PasswordUtilTester {
 
     public static void main(String[] args) throws NoSuchAlgorithmException, InvalidKeySpecException {
         String password = "Password";
-            System.out.println( PasswordUtil.getHashedPassword(password, PasswordUtil.getSalt()) );
+        byte[] salt = PasswordUtil.getSalt();
 
+        for(int i = 0; i < 5; i++) {
+            System.out.println(PasswordUtil.getHashedPassword(password, salt));
+        }
     }
 
 
